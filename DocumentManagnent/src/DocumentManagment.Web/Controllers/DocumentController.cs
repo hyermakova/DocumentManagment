@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace DocumentManagment.Web.Controllers
 {
+    /// <summary>
+    /// Document Controller.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class DocumentController : ControllerBase
@@ -30,6 +33,9 @@ namespace DocumentManagment.Web.Controllers
             this.logger = logger;
         }
 
+        /// <summary>Gets list of documents by the specified order criteria. Default value name.asc.</summary>
+        /// <param name="criteria">The criteria.</param>
+        /// <returns>List of documents.</returns>
         [Route("list/{order?}")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DocumentResponseModel>>> Get(Order criteria)
@@ -39,6 +45,9 @@ namespace DocumentManagment.Web.Controllers
             return this.Ok(documents.Select(this.mapper.Map));
         }
 
+        /// <summary>Downloads the document by specified location.</summary>
+        /// <param name="location">The location.</param>
+        /// <returns>File content.</returns>
         [HttpGet("{location}")]
         public async Task<ActionResult> Download(string location)
         {
@@ -63,6 +72,11 @@ namespace DocumentManagment.Web.Controllers
             return this.File(stream, "application/octet-stream", document.Name);
         }
 
+        /// <summary>
+        /// Save the specified file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns>Created document.</returns>
         [HttpPost]
         [FileValidationFilter]
         public async Task<ActionResult<DocumentResponseModel>> Post(IFormFile file)
@@ -75,6 +89,11 @@ namespace DocumentManagment.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes the document by specified location.
+        /// </summary>
+        /// <param name="location">The location.</param>
+        /// <returns>returns Status.</returns>
         [HttpDelete("{location}")]
         public async Task<ActionResult<DocumentResponseModel>> Delete(string location)
         {
