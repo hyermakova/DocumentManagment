@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/zhapp/files
+*.suo
+/zhapp/web/TradeDeskPOS.phpproj.user
+/zhapp/web/.vs/config/applicationhost.config
+/.idea
+/zhapp/web/.idea
+/zhapp/web/node_modules/
+/zhapp/web/templates/epicseats/less/compile.bat
+/zhapp/web/templates/pricing/
+/.project
+/Docker/apache_logs
+/zhapp/conf/configuration.php
+/zhapp/conf/localtickets.php
+/zhapp/conf/sh_push_api.htpasswd
+/zhapp/web/components/com_localtickets/resources/fonts/*.ufm.php
