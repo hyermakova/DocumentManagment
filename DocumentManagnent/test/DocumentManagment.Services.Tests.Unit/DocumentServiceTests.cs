@@ -4,7 +4,6 @@ using DocumentManagment.DataAccess.Repository;
 using DocumentManagment.DataAccess.Storage;
 using DocumentManagment.Domain.Model;
 using DocumentManagment.Services.Providers;
-using Microsoft.Extensions.Logging;
 using Moq;
 using System;
 using System.IO;
