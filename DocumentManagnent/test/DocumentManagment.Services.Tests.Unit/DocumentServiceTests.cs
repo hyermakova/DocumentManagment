@@ -18,14 +18,12 @@ namespace DocumentManagment.Services.Tests.Unit
         private readonly Mock<IBlobStorage> _blobStorageMock;
         private readonly Mock<IDocumentRepository> _documentRepositoryMock;
         private readonly Mock<IUserProvider> _userProviderMock;
-        private readonly Mock<ILogger<IDocumentService>> _loggerMock;
 
         public DocumentServiceTests()
         {
             _blobStorageMock = new Mock<IBlobStorage>();
             _documentRepositoryMock = new Mock<IDocumentRepository>();
             _userProviderMock = new Mock<IUserProvider>();
-            _loggerMock = new Mock<ILogger<IDocumentService>>();
         }
 
         [Fact]
@@ -135,7 +133,7 @@ namespace DocumentManagment.Services.Tests.Unit
         private IDocumentService CreateService()
         {
             return new DocumentService(_blobStorageMock.Object, _documentRepositoryMock.Object,
-                _userProviderMock.Object, _loggerMock.Object);
+                _userProviderMock.Object);
         }
     }
 }

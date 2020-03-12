@@ -2,7 +2,6 @@
 using DocumentManagment.DataAccess.Repository;
 using DocumentManagment.DataAccess.Storage;
 using DocumentManagment.Services.Providers;
-using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -14,18 +13,15 @@ namespace DocumentManagment.Services
         private readonly IBlobStorage blobStorage;
         private readonly IDocumentRepository documentRepository;
         private readonly IUserProvider userProvider;
-        private readonly ILogger<IDocumentService> logger;
 
         public DocumentService(
             IBlobStorage blobStorage,
             IDocumentRepository documentRepository,
-            IUserProvider userProvider,
-            ILogger<IDocumentService> logger)
+            IUserProvider userProvider)
         {
             this.blobStorage = blobStorage;
             this.documentRepository = documentRepository;
             this.userProvider = userProvider;
-            this.logger = logger;
         }
 
         public async Task<IEnumerable<Document>> GetDocumentsAsync(OrderCriteria criteria)
@@ -69,7 +65,6 @@ namespace DocumentManagment.Services
 
             if (!isDocumentExist)
             {
-                this.logger.LogTrace($"Document is already deleted. Document location: {id}");
                 return false;
             }
 
